@@ -42,7 +42,7 @@
 - name: Remove any AZs in the aws_az_deny_list when defined
   set_fact:
     availability_zones: >-
-      {{ az_names.availability_zones | json_query(__filter_query) }}
+      {{ az_names.availability_zones | community.general.json_query(__filter_query) }}
   vars:
     __filter_query: >-
       [?!contains(`{{ (aws_az_deny_list | default([])) | to_json }}`, zone_name)]
