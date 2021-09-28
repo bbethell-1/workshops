@@ -148,7 +148,7 @@ bigip_device_facts モジュールを使って、BIG-IPに設定されたプー�
 
     - name: "Show members belonging to pool"
       debug: "msg={{item}}"
-      loop: "{{bigip_device_facts.ltm_pools | json_query(query_string)}}"
+      loop: "{{bigip_device_facts.ltm_pools |community.general.json_query(query_string)}}"
       vars:
         query_string: "[?name=='http_pool'].members[*].name[]"
 ```
