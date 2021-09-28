@@ -5,6 +5,11 @@
   become: false
   gather_facts: true
   tasks:
+
+    - name: Validate collections path
+      debug:
+        var: ansible_facts.env.ANSIBLE_COLLECTIONS_PATHS
+
     - name: build workshop into collection
       shell: "ansible-galaxy collection build --verbose --force --output-path build/ {{ playbook_dir }}/.."
 
